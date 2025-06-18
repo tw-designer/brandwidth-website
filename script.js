@@ -5,83 +5,54 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
     const dots = document.querySelectorAll('.carousel-dots .dot');
-    let current = 0;
-    
+    let testimonialCurrent = 0;
+    let testimonialInterval = null;
+
     function showTestimonial(index) {
         testimonials.forEach((card, i) => {
             card.classList.toggle('active', i === index);
             dots[i].classList.toggle('active', i === index);
         });
-        current = index;
+        testimonialCurrent = index;
     }
-
-    prevBtn.addEventListener('click', function () {
-        let newIndex = (current - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(newIndex);
-    });
-
-    nextBtn.addEventListener('click', function () {
-        let newIndex = (current + 1) % testimonials.length;
-        showTestimonial(newIndex);
-    });
-
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', function () {
-            showTestimonial(i);
-        });
-    });
-
-    // Optional: swipe support for mobile
-    let startX = 0;
-    let endX = 0;
-    const carousel = document.querySelector('.testimonials-carousel');
-    if (carousel) {
-        carousel.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
-        });
-        carousel.addEventListener('touchend', function (e) {
-            endX = e.changedTouches[0].clientX;
-            if (startX - endX > 50) {
-                // swipe left
-                let newIndex = (current + 1) % testimonials.length;
-                showTestimonial(newIndex);
-            } else if (endX - startX > 50) {
-                // swipe right
-                let newIndex = (current - 1 + testimonials.length) % testimonials.length;
-                showTestimonial(newIndex);
-            }
-        });
-    }
-
-    // Testimonials auto-advance
-    const testimonialDots = document.querySelectorAll('.carousel-dots .dot');
-    let testimonialCurrent = 0;
-    let testimonialInterval = null;
     function nextTestimonial() {
-        let newIndex = (testimonialCurrent + 1) % testimonials.length;
-        showTestimonial(newIndex);
+        showTestimonial((testimonialCurrent + 1) % testimonials.length);
     }
     function prevTestimonial() {
-        let newIndex = (testimonialCurrent - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(newIndex);
+        showTestimonial((testimonialCurrent - 1 + testimonials.length) % testimonials.length);
     }
     if (testimonials.length) {
         showTestimonial(0);
-        prevBtn.addEventListener('click', prevTestimonial);
-        nextBtn.addEventListener('click', nextTestimonial);
-        testimonialDots.forEach((dot, i) => {
+        prevBtn.addEventListener('click', function () {
+            prevTestimonial();
+            resetTestimonialInterval();
+        });
+        nextBtn.addEventListener('click', function () {
+            nextTestimonial();
+            resetTestimonialInterval();
+        });
+        dots.forEach((dot, i) => {
             dot.addEventListener('click', function () {
                 showTestimonial(i);
+                resetTestimonialInterval();
             });
         });
-        testimonialInterval = setInterval(nextTestimonial, 5000);
+        function startTestimonialInterval() {
+            testimonialInterval = setInterval(nextTestimonial, 5000);
+        }
+        function resetTestimonialInterval() {
+            clearInterval(testimonialInterval);
+            startTestimonialInterval();
+        }
+        startTestimonialInterval();
         // Pause on hover
+        const carousel = document.querySelector('.testimonials-carousel');
         if (carousel) {
             carousel.addEventListener('mouseenter', function() {
                 clearInterval(testimonialInterval);
             });
             carousel.addEventListener('mouseleave', function() {
-                testimonialInterval = setInterval(nextTestimonial, 5000);
+                startTestimonialInterval();
             });
         }
     }

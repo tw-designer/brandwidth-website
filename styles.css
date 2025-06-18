@@ -233,14 +233,9 @@ p {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
     position: relative;
-    background: linear-gradient(135deg, var(--neutral-50) 0%, #ffffff 100%);
     overflow: hidden;
 }
-
 .hero-background {
     position: absolute;
     top: 0;
@@ -248,25 +243,34 @@ p {
     right: 0;
     bottom: 0;
     z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
 }
-
 .hero-particles {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(circle at 20% 80%, var(--primary-100) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--primary-50) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, var(--neutral-100) 0%, transparent 50%);
-    opacity: 0.6;
-    animation: float 20s ease-in-out infinite;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    /* Four-corner blurred gradients */
+    background:
+        radial-gradient(ellipse 40% 30% at 10% 10%, var(--primary-100) 60%, transparent 100%),
+        radial-gradient(ellipse 40% 30% at 90% 10%, var(--primary-50) 60%, transparent 100%),
+        radial-gradient(ellipse 40% 30% at 10% 90%, var(--primary-200) 60%, transparent 100%),
+        radial-gradient(ellipse 40% 30% at 90% 90%, var(--primary-accent) 30%, transparent 100%);
+    opacity: 0.7;
+    animation: heroGradientRotate 18s linear infinite;
+    will-change: background;
 }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+@keyframes heroGradientRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-content {
@@ -531,7 +535,7 @@ p {
     position: relative;
     max-width: 800px;
     margin: 0 auto var(--spacing-3xl);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .testimonial-card {
