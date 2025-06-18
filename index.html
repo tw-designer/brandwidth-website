@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandwidth - Creative Design Agency</title>
+    <title>Brandwidth Communications - Creative Design Agency</title>
     <meta name="description" content="Brandwidth is a creative design agency specializing in logo design, UI/UX design, branding, and content design. We help brands communicate effectively through innovative design solutions.">
     
     <!-- Fonts -->
@@ -16,6 +16,10 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons for light/dark mode -->
+    <link rel="icon" type="image/png" href="favicon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
 </head>
 <body>
     <!-- Navigation -->
@@ -57,10 +61,27 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="floating-elements">
-                    <div class="element element-1"></div>
-                    <div class="element element-2"></div>
-                    <div class="element element-3"></div>
+                <div class="hero-carousel">
+                    <div class="carousel-stack">
+                        <div class="carousel-card" data-index="0">
+                            <img src="carousel-images/project-uthaan-website-thumbnail.png" alt="Project Uthaan Website" />
+                        </div>
+                        <div class="carousel-card" data-index="1">
+                            <img src="carousel-images/sdg-nagaland-website-thumbnail.png" alt="SDG Nagaland Website" />
+                        </div>
+                        <div class="carousel-card" data-index="2">
+                            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80" alt="Work 3" />
+                        </div>
+                    </div>
+                    <div class="carousel-controls-vertical">
+                        <button class="carousel-arrow up" aria-label="Previous"><i class="fas fa-chevron-up"></i></button>
+                        <div class="carousel-dots-vertical">
+                            <span class="carousel-dot" data-slide="0"></span>
+                            <span class="carousel-dot" data-slide="1"></span>
+                            <span class="carousel-dot" data-slide="2"></span>
+                        </div>
+                        <button class="carousel-arrow down" aria-label="Next"><i class="fas fa-chevron-down"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,34 +90,53 @@
         </div>
     </section>
 
-    <!-- Trusted By Section -->
+    <!-- Trusted By Section with Ticker -->
     <section class="trusted-by">
         <div class="container">
             <h3 class="section-subtitle">Trusted by leading brands</h3>
-            <div class="client-logos">
-                <div class="logo-item">
-                    <div class="logo-placeholder">TechCorp</div>
-                </div>
-                <div class="logo-item">
-                    <div class="logo-placeholder">InnovateLab</div>
-                </div>
-                <div class="logo-item">
-                    <div class="logo-placeholder">FutureFlow</div>
-                </div>
-                <div class="logo-item">
-                    <div class="logo-placeholder">CreativeHub</div>
-                </div>
-                <div class="logo-item">
-                    <div class="logo-placeholder">DesignStudio</div>
-                </div>
-                <div class="logo-item">
-                    <div class="logo-placeholder">BrandVault</div>
+            <div class="client-logos-ticker">
+                <div class="client-logos-track">
+                    <img src="client-logos/Logo-01.png" alt="Client 1" class="client-logo" />
+                    <img src="client-logos/Logo-02.png" alt="Client 2" class="client-logo" />
+                    <img src="client-logos/Logo-03.png" alt="Client 3" class="client-logo" />
+                    <img src="client-logos/Logo-04.png" alt="Client 4" class="client-logo" />
+                    <img src="client-logos/Logo-05.png" alt="Client 5" class="client-logo" />
+                    <img src="client-logos/Logo-06.png" alt="Client 6" class="client-logo" />
+                    <img src="client-logos/Logo-07.png" alt="Client 7" class="client-logo" />
+                    <img src="client-logos/Logo-08.png" alt="Client 8" class="client-logo" />
+                    <img src="client-logos/Logo-09.png" alt="Client 9" class="client-logo" />
+                    <img src="client-logos/Logo-10.png" alt="Client 10" class="client-logo" />
+                    <img src="client-logos/Logo-11.png" alt="Client 11" class="client-logo" />
+                    <img src="client-logos/Logo-12.png" alt="Client 12" class="client-logo" />
+                    <img src="client-logos/itc-logo.png" alt="ITC" class="client-logo" />
+                    <img src="client-logos/shecrets-logo.png" alt="Shecrets" class="client-logo" />
+                    <img src="client-logos/undp-logo.png" alt="UNDP" class="client-logo" />
+                    <img src="client-logos/yamaha-logo.png" alt="Yamaha" class="client-logo" />
+                    <img src="client-logos/nmdc-logo.png" alt="NMDC" class="client-logo" />
+                    <!-- Repeat for seamless ticker -->
+                    <img src="client-logos/Logo-01.png" alt="Client 1" class="client-logo" />
+                    <img src="client-logos/Logo-02.png" alt="Client 2" class="client-logo" />
+                    <img src="client-logos/Logo-03.png" alt="Client 3" class="client-logo" />
+                    <img src="client-logos/Logo-04.png" alt="Client 4" class="client-logo" />
+                    <img src="client-logos/Logo-05.png" alt="Client 5" class="client-logo" />
+                    <img src="client-logos/Logo-06.png" alt="Client 6" class="client-logo" />
+                    <img src="client-logos/Logo-07.png" alt="Client 7" class="client-logo" />
+                    <img src="client-logos/Logo-08.png" alt="Client 8" class="client-logo" />
+                    <img src="client-logos/Logo-09.png" alt="Client 9" class="client-logo" />
+                    <img src="client-logos/Logo-10.png" alt="Client 10" class="client-logo" />
+                    <img src="client-logos/Logo-11.png" alt="Client 11" class="client-logo" />
+                    <img src="client-logos/Logo-12.png" alt="Client 12" class="client-logo" />
+                    <img src="client-logos/itc-logo.png" alt="ITC" class="client-logo" />
+                    <img src="client-logos/shecrets-logo.png" alt="Shecrets" class="client-logo" />
+                    <img src="client-logos/undp-logo.png" alt="UNDP" class="client-logo" />
+                    <img src="client-logos/yamaha-logo.png" alt="Yamaha" class="client-logo" />
+                    <img src="client-logos/nmdc-logo.png" alt="NMDC" class="client-logo" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section with Icons -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
@@ -105,36 +145,42 @@
             </div>
             <div class="bento-grid">
                 <div class="bento-card bento-1">
+                    <div class="bento-icon"><i class="fas fa-retweet"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">Content Repurposing</h3>
                         <p class="bento-desc">Transform long-form content into platform-specific snippets like Reels, Shorts, or carousels.</p>
                     </div>
                 </div>
                 <div class="bento-card bento-2">
+                    <div class="bento-icon"><i class="fas fa-palette"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">Brand & Identity Design</h3>
                         <p class="bento-desc">Craft cohesive visual identities: logo, typography, color palette, and guidelines.</p>
                     </div>
                 </div>
                 <div class="bento-card bento-3">
+                    <div class="bento-icon"><i class="fas fa-object-group"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">UI/UX Design</h3>
                         <p class="bento-desc">Design intuitive, beautiful interfaces for web, mobile, and apps.</p>
                     </div>
                 </div>
                 <div class="bento-card bento-4">
+                    <div class="bento-icon"><i class="fas fa-code"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">Web Development</h3>
                         <p class="bento-desc">Build fast, responsive websites using modern HTML, CSS, and JS.</p>
                     </div>
                 </div>
                 <div class="bento-card bento-5">
+                    <div class="bento-icon"><i class="fas fa-chalkboard"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">Presentation Design</h3>
                         <p class="bento-desc">Create polished decks and templates for pitches, reports, and more.</p>
                     </div>
                 </div>
                 <div class="bento-card bento-6">
+                    <div class="bento-icon"><i class="fas fa-hashtag"></i></div>
                     <div class="bento-content">
                         <h3 class="bento-title">Social Media Design</h3>
                         <p class="bento-desc">Design posts, stories, covers, and ads tailored to your brand voice.</p>
@@ -160,11 +206,11 @@
                         <p>"Brandwidth transformed our brand identity completely. Their attention to detail and creative vision exceeded our expectations. Our new logo and website have received countless compliments."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
-                                <div class="avatar-placeholder">SM</div>
+                                <div class="avatar-placeholder">DC</div>
                             </div>
                             <div class="author-info">
-                                <h4>Sarah Mitchell</h4>
-                                <span>CEO, TechCorp</span>
+                                <h4>Dhruv Chhabra</h4>
+                                <span>CEO, Techworks</span>
                             </div>
                         </div>
                     </div>
@@ -174,14 +220,14 @@
                         <div class="quote-icon">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <p>"Working with Brandwidth was a game-changer for our startup. Their UI/UX design skills helped us create an intuitive product that our users love. Highly recommended!"</p>
+                        <p>"Working with Brandwidth was a game-changer for our startup. Their insights and guidance helped us reach new audiences and grow our business."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
-                                <div class="avatar-placeholder">DJ</div>
+                                <div class="avatar-placeholder">DC</div>
                             </div>
                             <div class="author-info">
-                                <h4>David Johnson</h4>
-                                <span>Founder, InnovateLab</span>
+                                <h4>Deepak Chhabra</h4>
+                                <span>Founder, Vustr</span>
                             </div>
                         </div>
                     </div>
@@ -191,14 +237,14 @@
                         <div class="quote-icon">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <p>"The team at Brandwidth understood our vision perfectly. They delivered a comprehensive branding package that perfectly represents our company culture and values."</p>
+                        <p>"Vibhash is awesome. He is a great listener and has a great eye for detail. He is also very responsive and has a great sense of humor. I highly recommend him for any project."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">
-                                <div class="avatar-placeholder">LC</div>
+                                <div class="avatar-placeholder">VV</div>
                             </div>
                             <div class="author-info">
-                                <h4>Lisa Chen</h4>
-                                <span>Marketing Director, FutureFlow</span>
+                                <h4>Vibhash Vaibhav</h4>
+                                <span>Awesome Product Designer</span>
                             </div>
                         </div>
                     </div>
@@ -290,6 +336,7 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-bg-grid"></div>
         <div class="container">
             <div class="footer-content footer-grid">
                 <div class="footer-section footer-logo-section">

@@ -749,6 +749,24 @@ p {
     background: var(--neutral-900);
     color: white;
     padding: var(--spacing-4xl) 0 var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.20;
+    background-image: linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.footer-content, .footer-bottom {
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content.footer-grid {
@@ -973,12 +991,15 @@ p {
 }
 
 .bento-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
     background: white;
     border-radius: 20px;
     box-shadow: var(--shadow-md);
     padding: var(--spacing-3xl) var(--spacing-2xl);
-    display: flex;
-    align-items: flex-start;
     min-height: 220px;
     position: relative;
     overflow: hidden;
@@ -1020,6 +1041,8 @@ p {
 .bento-content {
     position: relative;
     z-index: 1;
+    align-items: center;
+    text-align: center;
 }
 
 .bento-title {
@@ -1091,4 +1114,274 @@ p {
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+/* Hero Carousel Styles (gentle transitions, 3D perspective, larger cards) */
+.hero-carousel {
+  position: relative;
+  width: 630px;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0 auto;
+}
+
+.carousel-stack {
+  position: relative;
+  width: 600px;
+  height: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.carousel-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 600px;
+  height: 380px;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px 0 rgba(44,44,44,0.10);
+  background: #fff;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.92) translateY(60px);
+  transition: opacity 0.5s ease, transform 0.5s ease, z-index 0s 0.5s, width 0.5s ease, height 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.carousel-card.active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  z-index: 3;
+  pointer-events: auto;
+  width: 600px;
+  height: 380px;
+  transition-delay: 0s;
+}
+
+.carousel-card.prev,
+.carousel-card.next {
+  opacity: 0.7;
+  transform: scale(0.75) translateY(60px);
+  z-index: 2;
+  pointer-events: none;
+  width: 450px;
+  height: 285px;
+}
+
+.carousel-card.prev {
+  transform: scale(0.75) translateY(-60px);
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 32px;
+  transition: filter 0.3s;
+}
+
+.carousel-card .carousel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(44,44,44,0.10);
+  cursor: pointer;
+  font-size: 2.2rem;
+  color: var(--primary-accent);
+  opacity: 0.92;
+}
+
+.carousel-card .carousel-play:hover {
+  background: rgba(255,61,0,0.18);
+  box-shadow: 0 4px 16px 0 rgba(255,61,0,0.10);
+  color: #fff;
+}
+
+.carousel-controls-vertical {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 10;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  color: var(--neutral-400);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.carousel-arrow:hover {
+  background: var(--primary-accent);
+  color: #fff;
+}
+
+.carousel-dots-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--neutral-300);
+  transition: background 0.2s, transform 0.2s;
+  margin: 0 2px;
+}
+
+.carousel-dot.active {
+  background: var(--primary-accent);
+  transform: scale(1.2);
+}
+
+@media (max-width: 1024px) {
+  .hero-carousel {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+  }
+  .carousel-stack, .carousel-card {
+    width: 100%;
+    max-width: 600px;
+  }
+  .carousel-card,
+  .carousel-card.active {
+    width: 100%;
+    max-width: 600px;
+    height: 220px;
+  }
+  .carousel-card.prev,
+  .carousel-card.next {
+    width: 75%;
+    max-width: 450px;
+    height: 160px;
+  }
+  .carousel-controls-vertical {
+    right: -40px;
+  }
+}
+@media (max-width: 700px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+  .hero-carousel {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 340px;
+    height: 180px;
+    justify-content: center;
+  }
+  .carousel-stack, .carousel-card {
+    width: 100%;
+    max-width: 340px;
+  }
+  .carousel-card,
+  .carousel-card.active {
+    width: 100%;
+    max-width: 340px;
+    height: 140px;
+  }
+  .carousel-card.prev,
+  .carousel-card.next {
+    width: 75%;
+    max-width: 255px;
+    height: 90px;
+  }
+  .carousel-controls-vertical {
+    right: -20px;
+  }
+}
+
+/* Service Icons in Bento Grid */
+.bento-icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary-400);
+  transition: color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bento-card:hover .bento-icon {
+  color: var(--primary-accent);
+  transform: scale(1.15) rotate(-6deg);
+}
+
+/* Client Logos Ticker */
+.client-logos-ticker {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  background: transparent;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
+}
+.client-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  animation: ticker 18s linear infinite;
+}
+.client-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(0.2) brightness(0.98);
+  opacity: 0.85;
+  transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+}
+.client-logo:hover {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.08);
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 700px) {
+  .client-logo {
+    height: 32px;
+    gap: 24px;
+  }
+  .client-logos-track {
+    gap: 24px;
+  }
+  .bento-icon {
+    font-size: 1.5rem;
+  }
 } 
