@@ -53,8 +53,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize
-    showTestimonial(0);
+    // Testimonials auto-advance
+    const testimonialDots = document.querySelectorAll('.carousel-dots .dot');
+    let testimonialCurrent = 0;
+    let testimonialInterval = null;
+    function nextTestimonial() {
+        let newIndex = (testimonialCurrent + 1) % testimonials.length;
+        showTestimonial(newIndex);
+    }
+    function prevTestimonial() {
+        let newIndex = (testimonialCurrent - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(newIndex);
+    }
+    if (testimonials.length) {
+        showTestimonial(0);
+        prevBtn.addEventListener('click', prevTestimonial);
+        nextBtn.addEventListener('click', nextTestimonial);
+        testimonialDots.forEach((dot, i) => {
+            dot.addEventListener('click', function () {
+                showTestimonial(i);
+            });
+        });
+        testimonialInterval = setInterval(nextTestimonial, 5000);
+        // Pause on hover
+        if (carousel) {
+            carousel.addEventListener('mouseenter', function() {
+                clearInterval(testimonialInterval);
+            });
+            carousel.addEventListener('mouseleave', function() {
+                testimonialInterval = setInterval(nextTestimonial, 5000);
+            });
+        }
+    }
 
     // Hero Carousel Logic
     function setHeroCarousel(index) {
@@ -170,5 +200,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (document.querySelector('.carousel-stack')) {
         initHeroCarousel();
+    }
+
+    // Mobile nav menu toggle
+    var navToggle = document.querySelector('.nav-toggle');
+    var navMenu = document.querySelector('.nav-menu');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
     }
 }); 
