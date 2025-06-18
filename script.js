@@ -16,35 +16,23 @@ document.addEventListener('DOMContentLoaded', function () {
         testimonialCurrent = index;
     }
     function nextTestimonial() {
-        showTestimonial((testimonialCurrent + 1) % testimonials.length);
+        let newIndex = (testimonialCurrent + 1) % testimonials.length;
+        showTestimonial(newIndex);
     }
     function prevTestimonial() {
-        showTestimonial((testimonialCurrent - 1 + testimonials.length) % testimonials.length);
+        let newIndex = (testimonialCurrent - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(newIndex);
     }
     if (testimonials.length) {
         showTestimonial(0);
-        prevBtn.addEventListener('click', function () {
-            prevTestimonial();
-            resetTestimonialInterval();
-        });
-        nextBtn.addEventListener('click', function () {
-            nextTestimonial();
-            resetTestimonialInterval();
-        });
+        prevBtn.addEventListener('click', prevTestimonial);
+        nextBtn.addEventListener('click', nextTestimonial);
         dots.forEach((dot, i) => {
             dot.addEventListener('click', function () {
                 showTestimonial(i);
-                resetTestimonialInterval();
             });
         });
-        function startTestimonialInterval() {
-            testimonialInterval = setInterval(nextTestimonial, 5000);
-        }
-        function resetTestimonialInterval() {
-            clearInterval(testimonialInterval);
-            startTestimonialInterval();
-        }
-        startTestimonialInterval();
+        testimonialInterval = setInterval(nextTestimonial, 5000);
         // Pause on hover
         const carousel = document.querySelector('.testimonials-carousel');
         if (carousel) {
@@ -52,7 +40,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 clearInterval(testimonialInterval);
             });
             carousel.addEventListener('mouseleave', function() {
-                startTestimonialInterval();
+                testimonialInterval = setInterval(nextTestimonial, 5000);
+            });
+        }
+        // Optional: swipe support for mobile
+        let startX = 0;
+        let endX = 0;
+        if (carousel) {
+            carousel.addEventListener('touchstart', function (e) {
+                startX = e.touches[0].clientX;
+            });
+            carousel.addEventListener('touchend', function (e) {
+                endX = e.changedTouches[0].clientX;
+                if (startX - endX > 50) {
+                    nextTestimonial();
+                } else if (endX - startX > 50) {
+                    prevTestimonial();
+                }
             });
         }
     }
