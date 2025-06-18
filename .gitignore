@@ -1,0 +1,12 @@
+# macOS metadata
+._*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node.js (if used in future)
+node_modules/
+
+# Env files
+.env
