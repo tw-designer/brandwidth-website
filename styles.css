@@ -186,8 +186,14 @@ p {
 
 .nav-menu {
     display: flex;
-    list-style: none;
-    gap: var(--spacing-xl);
+    align-items: center;
+    height: 100%;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .nav-menu a {
