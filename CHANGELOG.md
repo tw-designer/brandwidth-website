@@ -12,6 +12,8 @@
 - Added responsive, accessible contact form with validation. (index.html, styles.css)
 - Added light/dark mode favicons. (index.html)
 - Added footer with social links and copyright.
+- Created individual service pages for each service offered.
+- Made each service card in the services section clickable, linking to its respective page.
 
 ### Changed
 - Updated hero carousel to use images from carousel-images folder. (index.html)

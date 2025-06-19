@@ -1598,4 +1598,53 @@ p {
     max-height: 30vw;
     border-radius: 14px;
   }
+}
+
+/* Service Hero Section for Service Pages */
+.service-hero {
+  padding: var(--spacing-5xl) 0 var(--spacing-4xl) 0;
+  background: var(--neutral-50);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.service-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.service-hero-icon {
+  font-size: 3rem;
+  color: var(--primary-accent);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-hero-desc {
+  font-size: 1.2rem;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+  line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .service-hero {
+    padding: var(--spacing-3xl) 0 var(--spacing-2xl) 0;
+    min-height: 40vh;
+  }
+  .service-hero-content {
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
+  }
+  .service-hero-icon {
+    font-size: 2rem;
+  }
+  .service-hero-desc {
+    font-size: 1rem;
+  }
 } 
