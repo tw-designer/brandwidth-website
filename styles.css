@@ -1647,4 +1647,15 @@ p {
   .service-hero-desc {
     font-size: 1rem;
   }
+}
+
+/* Remove blue underlines from links in services section bento cards */
+.bento-card,
+.bento-card *,
+.bento-card a,
+.bento-card a:visited,
+.bento-card a:active,
+.bento-card a:focus {
+  text-decoration: none !important;
+  color: inherit !important;
 } 
